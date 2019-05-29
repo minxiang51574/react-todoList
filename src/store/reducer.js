@@ -1,7 +1,9 @@
 import {
     CHANGE_INPUT_VALUE,
     SUBMIT,
-    REMOVE
+    REMOVE,
+    INITLIST
+
 } from "./actionTypes.js"
 
 const defaultState = {
@@ -27,5 +29,10 @@ export default (state = defaultState , action) => {
         newState.list.splice(action.index,1)
         return newState
     }
+     if (action.type === INITLIST) {
+         const newState = JSON.parse(JSON.stringify(state))
+         newState.list = action.data
+         return newState
+     }
     return state ;
 }

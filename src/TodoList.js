@@ -7,10 +7,12 @@ import {
 import 'antd/dist/antd.css'
 import store from "./store"
 import "./todolist.css"
+
 import {
     getInputChangeAction,
     getSubmitAction,
-    getRemoveAction
+    getRemoveAction,
+    getList
 } from "./store/actionCreators.js"
 // import { CHANGE_INPUT_VALUE, SUBMIT, REMOVE } from "./store/actionTypes.js"
 
@@ -46,6 +48,15 @@ class TodoList extends Component {
                  </div>
             </div>
         )
+    }
+
+    componentDidMount(){
+        // axios.get("/list.json").then(res=>{
+        //      const action = initListAction(res.data)
+        //      store.dispatch(action)
+        // })
+        const action = getList()
+        store.dispatch(action)
     }
     handleChange(e){
         // const action = {
